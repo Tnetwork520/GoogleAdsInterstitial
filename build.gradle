@@ -1,0 +1,26 @@
+// すべてのサブプロジェクト/モジュールに共通の構成オプションを追加できるトップレベルのビルドファイル。
+buildscript {
+    ext.kotlin_version = "1.4.32"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        //注：ここにアプリケーションの依存関係を配置しない。
+        // これらは属している個々のモジュールのbuild.gradleファイル。
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
